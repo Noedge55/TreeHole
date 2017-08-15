@@ -1,4 +1,7 @@
 //app.js
+var Bmob = require('utils/bmob.js');
+var common = require("utils/common.js");
+Bmob.initialize("a8ce6e755b8b5225d5deb31c4961bd38","9398196e6d39320f841bc3fa92a23a37");
 App({
   onLaunch: function() {
     //调用API从本地缓存中获取数据
