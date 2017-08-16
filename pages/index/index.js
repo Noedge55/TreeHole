@@ -25,6 +25,9 @@ Page({
       url: '../logs/logs'
     })
   },
+  senLeaveMsg:function(){
+    
+  },
   onLoad: function () {
     console.log('onLoad')
     var that = this

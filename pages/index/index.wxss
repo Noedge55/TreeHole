@@ -24,6 +24,11 @@
 .btn{
   background: gray;
 } */
+
+.swiperitem{
+  text-align: center;
+}
+
 .titleview{
   width: 100%;
   height: 5%;
@@ -34,9 +39,10 @@
 }
 .bodyview{
   width: 100%;
-  height: 500px;
-  background: gainsboro;
+  height: 350px;
+  background: white;
 }
+
 .item{
   border-radius: 5px;
   height: 60px;
@@ -56,28 +62,74 @@
   margin-left: 20px;
   font-size: 15px;
 }
+.replyview{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.replyview .replyimg{
+  width:20px;
+  height: 20px;
+}
+.replyview .replynum{
+  margin-right: 10px;
+  margin-left: 2px;
+  color: #8a8a8a;
+  font-size: 15px;
+}
+.rtview{
+  background: #DCDCDC;
+  padding-left: 10px;
+  width: 80%;
+  border-radius: 3px;
+  margin: 0 auto;
+}
+
+.rtview .rtextn{
+  font-size: 13px;
+  font-weight: bold;
+}
+.rtview .rtextc{
+  font-size: 13px;
+}
 
 .line{
-  margin-top: 1px;
-  height: 1px;
+  margin-top: 2px;
+  height: 2px;
   width: 100%;
-  background: white;
+  background: gainsboro;
 }
 
 .inputview{
-  height: 7%;
-  background: gainsboro;
+  height: 10%;
+  background: white;
   position: fixed;
+  bottom:0px;
   width: 100%;
-  bottom: 0px;
-  margin: 0px,auto;
-  display: flex;
-  align-items: center;
   border: 2px black;
 }
-.inputview .inputtext{
+.inputform{
   width: 100%;
-  background: white;
-  border: solid 1px white;
-  border-radius: 5px;
+  height: 100%;
+}
+.inputview .inputtext{
+  margin-left: 5px;
+  padding-left: 10px;
+  margin-top: 8px;
+  width: 80%;
+  height: 70%;
+  background: gainsboro;
+  border-radius: 2px;
+  font-size: 15px;
+  float: left;
+}
+.inputview .send{
+  position: absolute;
+  padding: 0px;
+  top:5px;
+  right: 0px;
+  font-weight: bold;
+  font-size: 17px;
+  margin-right: 15px;
+  border: none;
+  background: none;
 }

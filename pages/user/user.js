@@ -1,10 +1,12 @@
 //获取应用实例
 var app = getApp()
 var Bmob = require('../../utils/bmob.js');
+var that;
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {}
+    userInfo: {},
+    myopenid : wx.getStorageSync("user_openid")
   },
   //事件处理函数
   bindViewTap: function () {

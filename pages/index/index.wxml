@@ -10,34 +10,39 @@
   </view>
 </view> -->
 
-<swiper indicator-dots="{{indicatorDots}}"
-  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-  <block wx:for="{{imgUrls}}">
-    <swiper-item>
-      <image src="{{item}}" class="slide-image" width="355" height="150"/>
-    </swiper-item>
-  </block>
-</swiper>
+<swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" class="block">
+      <swiper-item class="swiperitem">
+        <image src="{{item}}" class="slide-image" style="width:100%;height:100%" />
+      </swiper-item>
+    </block>
+  </swiper>
 
-<!-- <view class="titleview">
+  <!-- <view class="titleview">
   <text>在这里说出你想说的...</text>
 </view> -->
-<scroll-view class="bodyview" scroll-y>
-  <view wx:for="{{imgList}}">
-    <view class="item">
-      <image src="/images/user_img/{{item}}.png" mode="aspectFit"></image>
-      <text class="content">留言内容{{item}}</text>
+  <scroll-view class="bodyview" scroll-y>
+    <view wx:for="{{imgList}}">
+      <view class="item">
+        <image src="/images/user_img/{{item}}.png" mode="aspectFit"></image>
+        <text class="content">留言内容{{item}}</text>
+      </view>
+      <view class="replyview">
+        <text class="replynum">0</text>
+        <image class="replyimg" src="/images/reply.png" mode="aspectFit"></image>
+        <text class="replynum">0</text>
+        <image class="replyimg" src="/images/like.png" mode="aspectFit"></image>
+      </view>
+      <view class="rtview">
+        <text class="rtextn">回复人：</text>
+        <text class="rtextc">回复内容</text>
+      </view>
+      <view class="line"></view>
     </view>
-  <view class="line"></view>
+  </scroll-view>
+   <view class="inputview">
+    <form class="inputform">
+      <input class="inputtext" type="text" placeholder="写上你想说的:" />
+      <button class="send" bindtap="sendLeaveMsg" plain="true">发送</button>
+    </form>
   </view>
-  <view wx:for="{{imgList}}">
-    <view class="item">
-      <image src="/images/user_img/{{item}}.png" mode="aspectFit"></image>
-      <text class="content">留言内容{{item}}</text>
-    </view>
-  <view class="line"></view>
-  </view>
-</scroll-view>
-<view class="inputview">
-    <input class="inputtext" type="text" placeholder="写上你想说的"/>
-</view>
