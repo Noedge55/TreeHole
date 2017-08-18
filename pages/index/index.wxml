@@ -18,11 +18,8 @@
     </block>
   </swiper>
 
-  <!-- <view class="titleview">
-  <text>在这里说出你想说的...</text>
-</view> -->
   <scroll-view class="bodyview" scroll-y>
-    <view wx:for="{{imgList}}">
+    <navigator url="../msgDetail/msgDetail?item={{item}}" wx:for="{{imgList}}">
       <view class="item">
         <image src="/images/user_img/{{item}}.png" mode="aspectFit"></image>
         <text class="content">留言内容{{item}}</text>
@@ -33,16 +30,12 @@
         <text class="replynum">0</text>
         <image class="replyimg" src="/images/like.png" mode="aspectFit"></image>
       </view>
-      <view class="rtview">
-        <text class="rtextn">回复人：</text>
-        <text class="rtextc">回复内容</text>
-      </view>
       <view class="line"></view>
-    </view>
+    </navigator>
   </scroll-view>
    <view class="inputview">
-    <form class="inputform">
-      <input class="inputtext" type="text" placeholder="写上你想说的:" />
-      <button class="send" bindtap="sendLeaveMsg" plain="true">发送</button>
+    <form class="inputform" bindsubmit="senLeaveMsg">
+      <input name="content" class="inputtext" type="text" placeholder="写上你想说的:" />
+      <button class="send" plain="true" form-type="submit">发送</button>
     </form>
-  </view>
+  </view> 

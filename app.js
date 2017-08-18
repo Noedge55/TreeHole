@@ -7,8 +7,7 @@ App({
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
+    wx.setStorageSync('logs', logs);
     try{
       var value = wx.getStorageSync('user_openid');
       if(!value){
@@ -21,7 +20,8 @@ App({
                     success:function(result){
                       var userInfo = result.userInfo;
                       var nickName = userInfo.nickName;
-                      var avatarUrl = userInfo.avatarUrl;
+                      var picName = getApp().globalData.imgList[Math.floor(Math.random()*8)];
+                      var avatarUrl = "../../images/user_img/"+picName+".png";
                       Bmob.User.logIn(nickName,userData.openid,{
                         success:function(user){
                           try{
@@ -103,6 +103,7 @@ App({
   },
 
   globalData: {
-    userInfo: null
+    userInfo: null,
+    imgList: ['rabit', 'dog', 'chameleon', 'cock', 'elephant', 'hippo', 'squirrel', 'whale']
   }
 })

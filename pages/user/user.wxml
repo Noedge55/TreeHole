@@ -1,9 +1,9 @@
 <!--pages/user/user.wxml-->
-<text>{{myopenid}}111</text>
+<text>{{picSrc}}</text>
 <view class="container">
   <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <image class="userinfo-avatar" src="{{picSrc}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{nickName}}</text>
   </view>
   <view class="usermotto">
     <button class="btn" bindtap="bindViewTap">点我</button>

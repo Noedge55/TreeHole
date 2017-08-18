@@ -1,0 +1,16 @@
+<!--pages/msgDetail/msgDetail.wxml-->
+<view class="item">
+  <image src="/images/user_img/{{item}}.png" mode="aspectFit"></image>
+  <text class="content">留言内容{{item}}</text>
+</view>
+<view class="replyview">
+  <text class="replynum">0</text>
+  <image class="replyimg" src="/images/reply.png" mode="aspectFit"></image>
+  <text class="replynum">0</text>
+  <image class="replyimg" src="/images/like.png" mode="aspectFit"></image>
+</view>
+<view class="line"></view>
+<view class="rtview">
+        <text class="rtextn">回复人：</text>
+        <text class="rtextc">回复内容</text>
+</view>
