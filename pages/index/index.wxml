@@ -16,26 +16,28 @@
         <image src="{{item}}" class="slide-image" style="width:100%;height:100%" />
       </swiper-item>
     </block>
-  </swiper>
+</swiper>
 
-  <scroll-view class="bodyview" scroll-y>
-    <navigator url="../msgDetail/msgDetail?item={{item}}" wx:for="{{imgList}}">
+   <scroll-view class="bodyview" scroll-y>
+     <navigator url="../msgDetail/msgDetail?itemId={{item.id}}&itemContent={{item.content}}&itemPic={{item.userPic}}&itemLikeNum={{item.likeNum}}&itemReplyNum={{item.replyNum}}" wx:for="{{leaveMsgList}}">
+     <view>
       <view class="item">
-        <image src="/images/user_img/{{item}}.png" mode="aspectFit"></image>
-        <text class="content">留言内容{{item}}</text>
+        <image src="{{item.userPic}}" mode="aspectFit"></image>
+        <text class="content">{{item.content}}</text>
       </view>
       <view class="replyview">
-        <text class="replynum">0</text>
+        <text class="replynum">{{item.likeNum}}</text>
         <image class="replyimg" src="/images/reply.png" mode="aspectFit"></image>
-        <text class="replynum">0</text>
+        <text class="replynum">{{item.replyNum}}</text>
         <image class="replyimg" src="/images/like.png" mode="aspectFit"></image>
       </view>
       <view class="line"></view>
-    </navigator>
-  </scroll-view>
+     </view>
+     </navigator>
+  </scroll-view> 
    <view class="inputview">
     <form class="inputform" bindsubmit="senLeaveMsg">
-      <input name="content" class="inputtext" type="text" placeholder="写上你想说的:" />
+      <input name="content" class="inputtext" type="text" placeholder="写上你想说的:" value="{{inputContent}}"/>
       <button class="send" plain="true" form-type="submit">发送</button>
     </form>
   </view> 

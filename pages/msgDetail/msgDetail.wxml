@@ -1,16 +1,23 @@
 <!--pages/msgDetail/msgDetail.wxml-->
 <view class="item">
-  <image src="/images/user_img/{{item}}.png" mode="aspectFit"></image>
-  <text class="content">留言内容{{item}}</text>
+  <image src="{{itemPic}}" mode="aspectFit"></image>
+  <text class="content">{{itemContent}}</text>
 </view>
 <view class="replyview">
-  <text class="replynum">0</text>
-  <image class="replyimg" src="/images/reply.png" mode="aspectFit"></image>
-  <text class="replynum">0</text>
-  <image class="replyimg" src="/images/like.png" mode="aspectFit"></image>
+  <text class="replynum">{{itemReplyNum}}</text>
+  <image class="replyimg" bindtouchstart="changeReplyImg" bindtouchend="resetReplyImg" src="{{replyImgSrc}}" mode="aspectFit"></image>
+  <text class="replynum">{{itemLikeNum}}</text>
+  <image class="replyimg" bindtap="changeLike" src="{{likeImgSrc}}" mode="aspectFit"></image>
 </view>
 <view class="line"></view>
 <view class="rtview">
         <text class="rtextn">回复人：</text>
         <text class="rtextc">回复内容</text>
+</view>
+
+<view class="inputview">
+    <form class="inputform" data-id="{{itemId}}" bindsubmit="sendReplyMsg">
+      <input name="content" class="inputtext" type="text" placeholder="写上你想说的:" value="{{inputContent}}"/>
+      <button class="send" plain="true" form-type="submit">回复</button>
+    </form>
 </view>

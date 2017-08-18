@@ -24,7 +24,8 @@
 .btn{
   background: gray;
 } */
-
+.swiper{
+}
 .swiperitem{
   text-align: center;
 }

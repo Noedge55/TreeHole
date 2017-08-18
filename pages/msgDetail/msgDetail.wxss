@@ -59,3 +59,38 @@
 .rtview .rtextc{
   font-size: 13px;
 }
+
+.inputview{
+  height: 10%;
+  background: white;
+  position: fixed;
+  bottom:0px;
+  width: 100%;
+  border: 2px black;
+}
+.inputform{
+  width: 100%;
+  height: 100%;
+}
+.inputview .inputtext{
+  margin-left: 5px;
+  padding-left: 10px;
+  margin-top: 8px;
+  width: 80%;
+  height: 70%;
+  background: gainsboro;
+  border-radius: 2px;
+  font-size: 15px;
+  float: left;
+}
+.inputview .send{
+  position: absolute;
+  padding: 0px;
+  top:5px;
+  right: 0px;
+  font-weight: bold;
+  font-size: 17px;
+  margin-right: 15px;
+  border: none;
+  background: none;
+}
