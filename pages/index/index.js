@@ -20,6 +20,7 @@ Page({
     pageSize: 5,
     limit : 5,
     count : 0,
+    tempCount:0,
     inputContent:''
   },
   senLeaveMsg:function(e){
@@ -44,6 +45,7 @@ Page({
         success: function (result) {
           console.log("留言发布成功,objectId:" + result.id);
           common.showModal("留言发布成功");
+          this.onShow();
         },
         error: function (result, error) {
           console.log("留言发布失败");
@@ -79,11 +81,14 @@ Page({
       }
     });
   },
-  onReachBottom:function(e){
+  bindLoadMore:function(e){
     var limit = that.data.limit;
-    console.log("上拉加载更多..." + that.data.limit);
-    if (that.data.limit > that.data.pageSize && that.data.limit - that.data.pageSize >= that.data.count) {
-      common.showModal("已经是最后一页");
+    that = this;
+    console.log("上拉加载更多..." + limit);
+    if (limit > that.data.pageSize && limit - that.data.pageSize >= that.data.count) {
+      if(this.data.tempCount++ != 0){
+        common.showModal("已经是最后一页"+limit+","+that.data.pageSize+","+that.data.count);
+      }
       return false;
     }
     that.setData({
@@ -91,12 +96,13 @@ Page({
     });
     this.onShow();
   },
-  onPullDownRefresh: function(){
+  
+  pullDownRefresh: function(){
     wx.stopPullDownRefresh();
     console.log("下拉刷新");
-    common.showModal("下拉刷新");
     that.setData({
-      limit : that.data.pageSize
+      limit : that.data.pageSize,
+      tempCount:0
     })
     that.onShow();
   }

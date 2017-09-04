@@ -18,7 +18,7 @@
     </block>
 </swiper>
 
-   <scroll-view class="bodyview" scroll-y>
+   <scroll-view class="bodyview" scroll-y bindscrolltolower='bindLoadMore' bindscrolltoupper='pullDownRefresh' lower-threshold="1" upper-threshold="1">
      <navigator url="../msgDetail/msgDetail?itemId={{item.id}}&itemContent={{item.content}}&itemPic={{item.userPic}}&itemLikeNum={{item.likeNum}}&itemReplyNum={{item.replyNum}}" wx:for="{{leaveMsgList}}">
      <view>
       <view class="item">
@@ -26,9 +26,9 @@
         <text class="content">{{item.content}}</text>
       </view>
       <view class="replyview">
-        <text class="replynum">{{item.likeNum}}</text>
-        <image class="replyimg" src="/images/reply.png" mode="aspectFit"></image>
         <text class="replynum">{{item.replyNum}}</text>
+        <image class="replyimg" src="/images/reply.png" mode="aspectFit"></image>
+        <text class="replynum">{{item.likeNum}}</text>
         <image class="replyimg" src="/images/like.png" mode="aspectFit"></image>
       </view>
       <view class="line"></view>

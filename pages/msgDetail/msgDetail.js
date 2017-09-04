@@ -13,6 +13,8 @@ Page({
     itemPic:'',
     itemLikeNum:'',
     itemReplyNum:'',
+    
+    replyList:[],
 
     replyImgSrc:'/images/reply.png',
     likeImgSrc:'/images/like.png',
@@ -67,12 +69,46 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    that.setData({
-      itemId:options.itemId,
-      itemContent:options.itemContent,
-      itemPic:options.itemPic,
-      itemLikeNum:options.itemLikeNum,
-      itemReplyNum:options.itemReplyNum
+    var LeaveMsg = Bmob.Object.extend("leave_message");
+    var query = new Bmob.Query(LeaveMsg);
+    query.get(options.itemId,{
+      success:function(result){
+        //查询成功
+        that.setData({
+          itemId:options.itemId,
+          itemPic:options.itemPic,
+          itemContent:result.get("content"),
+          itemLikeNum:result.get("likenum"),
+          itemReplyNum:result.get("replynum")
+        });
+        var list = new Array();
+        var ReplyMsg = Bmob.Object.extend("reply_message");
+        var query1 = new Bmob.Query(ReplyMsg);
+        query1.equalTo("leavemsg",options.itemId);
+        query1.find({
+          success:function(result1){
+            console.log("共查询到"+result1.length + "条reply信息");
+            for(var i = 0 ;  i < result1.length ; i++){
+            var jsonB;
+              jsonB = {
+                "index":i+1 || 0,
+                "content":result1[i].get("content") || ''
+              }
+              list.push(jsonB);
+            }
+            that.setData({
+              replyList:list
+            });
+          },
+          error:function(object,error){
+            console.log(error);
+          }
+        })
+      },
+      error:function(object,error){
+        //查询失败
+        console.log(error)
+      }
     })
   },
 
