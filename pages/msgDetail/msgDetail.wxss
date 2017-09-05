@@ -2,10 +2,10 @@
 
 .item{
   border-radius: 5px;
-  height: 60px;
+  height: 120px;
   width: 100%;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   flex-direction: row;
 }
 .item image{
@@ -17,10 +17,11 @@
 }
 .item .content{
   margin-left: 20px;
+  margin-top: 15px;
   font-size: 15px;
 }
 .replyview{
-  margin-top: 70px;
+  /* margin-top: 70px; */
   display: flex;
   flex-direction: row-reverse;
 }
@@ -45,15 +46,13 @@
 
 .replycontainer{
   width: 100%;
-  height: 100px;
-  background: #cccccc;
   margin-top: 10px;
 }
 
 .rtview{
-  background: #DCDCDC;
+  background: gainsboro;
   padding-left: 10px;
-  width: 80%;
+  width: 90%;
   border-radius: 3px;
   margin: 0 auto;
   margin-bottom: 10px;

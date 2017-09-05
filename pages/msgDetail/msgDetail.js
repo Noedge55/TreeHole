@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    scrollViewHeight:wx.getStorageSync("windowHeight")-150,
     itemId:'',
     itemContent:'',
     itemPic:'',
@@ -18,6 +19,7 @@ Page({
 
     replyImgSrc:'/images/reply.png',
     likeImgSrc:'/images/like.png',
+    inputContent:''
   },
   changeReplyImg:function(e){
     that = this;
@@ -50,8 +52,10 @@ Page({
             result.set('replynum',result.get('replynum')+1);
             result.save();
             that.setData({
-              itemReplyNum: result.get('replynum')
+              itemReplyNum: result.get('replynum'),
+              inputContent:''
             });
+            that.onShow();
           },
           error:function(e){
             console.log(e);
@@ -69,47 +73,11 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    var LeaveMsg = Bmob.Object.extend("leave_message");
-    var query = new Bmob.Query(LeaveMsg);
-    query.get(options.itemId,{
-      success:function(result){
-        //查询成功
-        that.setData({
-          itemId:options.itemId,
-          itemPic:options.itemPic,
-          itemContent:result.get("content"),
-          itemLikeNum:result.get("likenum"),
-          itemReplyNum:result.get("replynum")
-        });
-        var list = new Array();
-        var ReplyMsg = Bmob.Object.extend("reply_message");
-        var query1 = new Bmob.Query(ReplyMsg);
-        query1.equalTo("leavemsg",options.itemId);
-        query1.find({
-          success:function(result1){
-            console.log("共查询到"+result1.length + "条reply信息");
-            for(var i = 0 ;  i < result1.length ; i++){
-            var jsonB;
-              jsonB = {
-                "index":i+1 || 0,
-                "content":result1[i].get("content") || ''
-              }
-              list.push(jsonB);
-            }
-            that.setData({
-              replyList:list
-            });
-          },
-          error:function(object,error){
-            console.log(error);
-          }
-        })
-      },
-      error:function(object,error){
-        //查询失败
-        console.log(error)
-      }
-    })
+    console.log(that.data.windowHeight);
+    that.setData({
+      itemId: options.itemId,
+      itemPic: options.itemPic
+    });
   },
 
   /**
@@ -123,7 +91,49 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    var LeaveMsg = Bmob.Object.extend("leave_message");
+    var query = new Bmob.Query(LeaveMsg);
+    query.get(that.data.itemId, {
+      success: function (result) {
+        //查询成功
+        that.setData({
+          itemContent: result.get("content"),
+          itemLikeNum: result.get("likenum"),
+          itemReplyNum: result.get("replynum")
+        });
+        var IsLike = Bmob.Object.extend("is_like");
+        var queryIsLike = new Bmob.Query(IsLike);
+
+        var list = new Array();
+        var ReplyMsg = Bmob.Object.extend("reply_message");
+        var query1 = new Bmob.Query(ReplyMsg);
+        query1.equalTo("leavemsg", that.data.itemId);
+        query1.find({
+          success: function (result1) {
+            console.log("共查询到" + result1.length + "条reply信息");
+            for (var i = 0; i < result1.length; i++) {
+              var jsonB;
+              jsonB = {
+                "index": i + 1 || 0,
+                "content": result1[i].get("content") || ''
+              }
+              list.push(jsonB);
+            }
+            that.setData({
+              replyList: list
+            });
+          },
+          error: function (object, error) {
+            console.log(error);
+          }
+        })
+      },
+      error: function (object, error) {
+        //查询失败
+        console.log(error)
+      }
+    })
   },
 
   /**

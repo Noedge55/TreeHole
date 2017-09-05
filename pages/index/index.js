@@ -6,6 +6,7 @@ var common = require('../../utils/common.js');
 var that ;
 Page({
   data: {
+    scrollViewHeight: wx.getStorageSync("windowHeight") - 200,
     imgUrls: [
       'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
@@ -87,7 +88,8 @@ Page({
     console.log("上拉加载更多..." + limit);
     if (limit > that.data.pageSize && limit - that.data.pageSize >= that.data.count) {
       if(this.data.tempCount++ != 0){
-        common.showModal("已经是最后一页"+limit+","+that.data.pageSize+","+that.data.count);
+        // common.showModal("已经是最后一页"+limit+","+that.data.pageSize+","+that.data.count);
+        console.log("已经是最后一页" + limit + "," + that.data.pageSize + "," + that.data.count);
       }
       return false;
     }

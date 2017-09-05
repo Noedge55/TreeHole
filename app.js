@@ -5,9 +5,14 @@ Bmob.initialize("a8ce6e755b8b5225d5deb31c4961bd38","9398196e6d39320f841bc3fa92a2
 App({
   onLaunch: function() {
     //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
+    var logs = wx.getStorageSync('logs') || [];
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs);
+    wx.getSystemInfo({
+      success: function(res) {
+        wx.setStorageSync("windowHeight",res.windowHeight);
+      },
+    });
     try{
       var value = wx.getStorageSync('user_openid');
       if(!value){
@@ -104,6 +109,6 @@ App({
 
   globalData: {
     userInfo: null,
-    imgList: ['rabit', 'dog', 'chameleon', 'cock', 'elephant', 'hippo', 'squirrel', 'whale']
+    imgList: ['rabit', 'dog', 'chameleon', 'cock', 'elephant', 'hippo', 'squirrel', 'whale'],
   }
 })

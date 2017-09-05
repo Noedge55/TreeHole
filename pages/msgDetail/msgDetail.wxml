@@ -10,13 +10,12 @@
   <image class="replyimg" bindtap="changeLike" src="{{likeImgSrc}}" mode="aspectFit"></image>
 </view> 
 <view class="line"></view> 
-  <view class="replycontainer">
+  <scroll-view class="replycontainer" scroll-y style='height:{{scrollViewHeight}}px'>
     <view class="rtview" wx:for="{{replyList}}">
             <text class="rtextn">{{item.index}}：</text>
             <text class="rtextc">{{item.content}}</text>
     </view>
-  </view>
-
+  </scroll-view>
 <view class="inputview">
     <form class="inputform" data-id="{{itemId}}" bindsubmit="sendReplyMsg">
       <input name="content" class="inputtext" type="text" placeholder="写上你想说的:" value="{{inputContent}}"/>
