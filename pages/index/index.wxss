@@ -72,6 +72,7 @@
   height: 20px;
 }
 .replyview .replynum{
+  width: 10px;
   margin-right: 10px;
   margin-left: 2px;
   color: #8a8a8a;

@@ -1,5 +1,4 @@
 <!--pages/user/user.wxml-->
-<text>{{picSrc}}</text>
 <view class="container">
   <view  bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="{{picSrc}}" background-size="cover"></image>

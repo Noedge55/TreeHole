@@ -8,10 +8,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    scrollViewHeight:wx.getStorageSync("windowHeight")-150,
+    scrollViewHeight:wx.getStorageSync("windowHeight")-165,
+    item:'',
     itemId:'',
     itemContent:'',
     itemPic:'',
+    oldItemLikeNum:'',
     itemLikeNum:'',
     itemReplyNum:'',
     
@@ -65,7 +67,18 @@ Page({
     });
   },
   changeLike:function(e){
-    
+    var that = this;
+    if (that.data.likeImgSrc == '/images/like.png'){
+      that.setData({
+        likeImgSrc: '/images/like_s.png',
+        itemLikeNum: this.data.itemLikeNum + 1,
+      })
+    }else{
+      that.setData({
+        likeImgSrc: '/images/like.png',
+        itemLikeNum: this.data.itemLikeNum - 1,
+      })
+    }
   },
 
   /**
@@ -92,19 +105,44 @@ Page({
    */
   onShow: function () {
     var that = this;
+    //查询该条留言的基本信息
     var LeaveMsg = Bmob.Object.extend("leave_message");
     var query = new Bmob.Query(LeaveMsg);
     query.get(that.data.itemId, {
       success: function (result) {
         //查询成功
         that.setData({
+          item:result,
           itemContent: result.get("content"),
+          oldItemLikeNum: result.get("likenum"),
           itemLikeNum: result.get("likenum"),
           itemReplyNum: result.get("replynum")
         });
+
+        //查询当前用户是否点赞该条留言
         var IsLike = Bmob.Object.extend("is_like");
         var queryIsLike = new Bmob.Query(IsLike);
+        var currentUser = Bmob.User.current();
+        queryIsLike.equalTo("liker", currentUser);
+        queryIsLike.equalTo("leavemsg", that.data.itemId);
+        queryIsLike.find({
+          success: function (results) {
+            if (results.length == 0) {
+              that.setData({
+                likeImgSrc: '/images/like.png'
+              });
+            } else {
+              that.setData({
+                likeImgSrc: '/images/like_s.png'
+              });
+            }
+          },
+          error: function (error) {
 
+          }
+        });
+
+        //查询该条留言下的所有回复信息
         var list = new Array();
         var ReplyMsg = Bmob.Object.extend("reply_message");
         var query1 = new Bmob.Query(ReplyMsg);
@@ -140,14 +178,54 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    var that = this;
+    var IsLike = Bmob.Object.extend("is_like");
+    if(that.data.oldItemLikeNum < that.data.itemLikeNum){
+      var isLike = new IsLike();
+      isLike.set("liker",Bmob.User.current());
+      isLike.set("leavemsg",that.data.item);
+      isLike.save(null,{
+        success:function(result){
+          console.log("喜欢");
+          that.updateLike();
+        },
+        error:function(object,error){
+          console.log(error);
+        }
+      });
+    } else if (that.data.oldItemLikeNum > that.data.itemLikeNum){
+      var queryLike = new Bmob.Query(IsLike);
+      queryLike.equalTo("liker",Bmob.User.current());
+      queryLike.find().then(function (todos) {
+        return Bmob.Object.destroyAll(todos);
+      }).then(function (todos) {
+        console.log(todos);
+        // 删除成功
+        that.updateLike();
+      }, function (error) {
+        // 异常处理
+      });
+    }
+  },
+  updateLike:function(){
+    var LeaveMsg = Bmob.Object.extend("leave_message");
+    var query = new Bmob.Query(LeaveMsg);
+    query.get(that.data.itemId, {
+      success: function (result) {
+        result.set('likenum', that.data.itemLikeNum);
+        result.save();
+      },
+      error: function (object, error) {
+        console.log(error);
+      }
+    });
   },
 
   /**
