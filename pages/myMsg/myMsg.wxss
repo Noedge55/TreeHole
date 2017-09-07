@@ -1,0 +1,14 @@
+/* pages/myMsg/myMsg.wxss */
+.body{
+  height: 100%;
+  width: 100%;
+}
+.text{
+  margin-left: 20px;
+}
+.line{
+  margin-top: 2px;
+  height: 4px;
+  width: 100%;
+  background: gainsboro;
+}

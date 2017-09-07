@@ -4,7 +4,15 @@
     <image class="userinfo-avatar" src="{{picSrc}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{nickName}}</text>
   </view>
-  <view class="usermotto">
-    <button class="btn" bindtap="bindViewTap">点我</button>
-  </view>
+  <navigator class="message" url='../myMsg/myMsg'>
+    <image class="msgimg" src='/images/mymsg.png'></image>
+    <view class="text">我的留言</view>
+    <image class="moreimg" src='/images/more.png'></image>
+  </navigator>
+  <view class="line"></view>
+  <navigator class="message" url='../myMsg/myMsg'>
+    <image class="msgimg" src='/images/reply.png'></image>
+    <view class="text">我的回复</view>
+    <image class="moreimg" src='/images/more.png'></image>
+  </navigator>
 </view>

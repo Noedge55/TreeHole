@@ -1,0 +1,10 @@
+<!--pages/myMsg/myMsg.wxml-->
+<view class="body" style='height:{{windowHeight}}'>
+  <scroll-view>
+    <view class="line"></view>
+    <view class="item" wx:for="{{[1,2,3,4,5]}}">
+      <text class="text">留言</text>
+      <view class="line"></view>
+    </view>
+  </scroll-view>
+</view>

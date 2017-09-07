@@ -39,6 +39,7 @@ App({
 
                           }
                           console.log("登录成功");
+                        
                         },
                         error:function(user,error){
                           if(error.code=="101"){

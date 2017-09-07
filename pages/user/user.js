@@ -9,12 +9,7 @@ Page({
     nickName: wx.getStorageSync("my_nick"),
   },
   //事件处理函数
-  bindViewTap: function () {wx.reLaunch({
-    url: '',
-    success: function(res) {},
-    fail: function(res) {},
-    complete: function(res) {},
-  })
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
@@ -24,6 +19,5 @@ Page({
   },
   onShow: function()  {
     console.log('onShow');
-    console.log(this.data.picSrc);
   }
 })
