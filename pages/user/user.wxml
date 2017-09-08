@@ -4,7 +4,7 @@
     <image class="userinfo-avatar" src="{{picSrc}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{nickName}}</text>
   </view>
-  <navigator class="message" url='../myMsg/myMsg'>
+  <navigator class="message" url='../myMsg/myMsg?display=none'>
     <image class="msgimg" src='/images/mymsg.png'></image>
     <view class="text">我的留言</view>
     <image class="moreimg" src='/images/more.png'></image>

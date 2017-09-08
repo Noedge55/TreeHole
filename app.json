@@ -1,10 +1,10 @@
 {
   "pages":[
-    "pages/myMsg/myMsg",
-    "pages/user/user",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/msgDetail/msgDetail"
+    "pages/user/user",
+    "pages/msgDetail/msgDetail",
+    "pages/myMsg/myMsg",
+    "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",

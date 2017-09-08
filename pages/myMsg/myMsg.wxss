@@ -3,8 +3,16 @@
   height: 100%;
   width: 100%;
 }
-.text{
-  margin-left: 20px;
+.item{
+  width: 100%;
+}
+.lmsg{
+  margin-left: 10px;
+  font-weight: bold;
+}
+.rmsg{
+  margin-left: 15px;
+  font-size: 15px;
 }
 .line{
   margin-top: 2px;

@@ -2,9 +2,10 @@
 <view class="body" style='height:{{windowHeight}}'>
   <scroll-view>
     <view class="line"></view>
-    <view class="item" wx:for="{{[1,2,3,4,5]}}">
-      <text class="text">留言</text>
+    <navigator class="item" wx:for="{{lmList}}">
+      <view class="lmsg">{{item.lmContent}}</view>
+      <view class="rmsg" style='display:{{display}}'>{{item.rmContent}}</view>
       <view class="line"></view>
-    </view>
+    </navigator>
   </scroll-view>
 </view>
