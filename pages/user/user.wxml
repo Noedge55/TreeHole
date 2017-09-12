@@ -1,6 +1,6 @@
 <!--pages/user/user.wxml-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
+  <view  bindtap="changeHeadPic" class="userinfo">
     <image class="userinfo-avatar" src="{{picSrc}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{nickName}}</text>
   </view>

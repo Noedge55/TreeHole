@@ -1,15 +1,5 @@
 <!--index.wxml-->
 
-<!-- <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto">
-    <button class="btn" bindtap="bindViewTap">点我</button>
-  </view>
-</view> -->
-
 <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{imgUrls}}" class="block">
       <swiper-item class="swiperitem">
@@ -30,6 +20,7 @@
         <image class="replyimg" src="/images/reply.png" mode="aspectFit"></image>
         <text class="replynum">{{item.likeNum}}</text>
         <image class="replyimg" src="/images/like.png" mode="aspectFit"></image>
+        <view class="time">{{item.time}}</view>
       </view>
       <view class="line"></view>
      </view>

@@ -102,15 +102,19 @@ Page({
   },
   
   pullDownRefresh: function(){
-    wx.stopPullDownRefresh();
-    console.log("下拉刷新");
-    that.setData({
-      limit : that.data.pageSize,
-      tempCount:0
-    })
-    that.onShow();
+    wx.showNavigationBarLoading();
+    setTimeout(function(){
+      console.log("下拉刷新");
+      that.setData({
+        limit: that.data.pageSize,
+        tempCount: 0
+      })
+      that.onShow();
+    },1500)
+    wx.hideNavigationBarLoading();
   }
 })
+
 
 function getReturn(){
   //判断是否为最后一页
@@ -140,7 +144,7 @@ function getReturn(){
               var userId = results[i].get("user").id; //获取用户id
               var content = results[i].get("content");//获取留言内容
               var id = results[i].id;//获取留言id
-              var createAt = results[i].createdAt;//获取留言创建时间
+              var createAt = results[i].createdAt.substring(0, 10);//获取留言创建时间
               var userPic = results[i].get("user").get("userPic");//获取用户头像
               var likeNum = results[i].get("likenum");//获取留言被赞次数
               var replyNum = results[i].get("replynum");//获取留言被回复次数
@@ -165,7 +169,8 @@ function getReturn(){
                 "userPic" : userPic  || '',
                 "likeNum" : likeNum  || 0 ,
                 "replyNum": replyNum || 0 ,
-                "isLike"  : isLike   || false
+                "isLike"  : isLike   || false,
+                "time"    : createAt || "00:00:00",
               }
               msgList.push(jsonA);
             }
