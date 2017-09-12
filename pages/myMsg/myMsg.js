@@ -48,8 +48,9 @@ Page({
           for(let i = 0 ; i < results.length ; i++){
             let jsonA;
             jsonA = {
-              lmId:results[i].get("id"),
-              lmContent:results[i].get("content")
+              lmId:results[i].id,
+              lmContent:results[i].get("content"),
+              msgTime: results[i].createdAt.substring(0, 10)
             }
             list.push(jsonA);
           }
@@ -84,10 +85,11 @@ Page({
             query1.get(results[i].get("leavemsg").id, {
               success: function (result) {
                 let jsonA = {
-                  rmId: results[i].get("leavemsg").id,//获取回复id
-                  lmId: results[i].id,//获取留言id
+                  lmId: results[i].get("leavemsg").id,//获取回复id
+                  rmId: results[i].id,//获取留言id
                   rmContent: results[i].get("content"),//获取回复内容
-                  lmContent: result.get("content")//获取对应留言内容
+                  lmContent: result.get("content"),//获取对应留言内容
+                  msgTime: results[i].createdAt.substring(0,10)
                 }
                 list.push(jsonA);
                 that.setData({

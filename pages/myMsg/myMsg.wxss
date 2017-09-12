@@ -7,13 +7,20 @@
   width: 100%;
 }
 .lmsg{
-  margin-left: 10px;
+  margin-left: 15px;
   font-weight: bold;
+  margin-bottom: 5px;
 }
 .rmsg{
   margin-left: 15px;
   font-size: 15px;
+  margin-bottom: 5px;
 }
+.msgtime{
+  margin-left: 15px;
+  font-size: 10px;
+}
+
 .line{
   margin-top: 2px;
   height: 4px;

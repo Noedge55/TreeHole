@@ -2,9 +2,10 @@
 <view class="body" style='height:{{windowHeight}}'>
   <scroll-view>
     <view class="line"></view>
-    <navigator class="item" wx:for="{{lmList}}">
+    <navigator class="item" wx:for="{{lmList}}" url="../msgDetail/msgDetail?itemId={{item.lmId}}">
       <view class="lmsg">{{item.lmContent}}</view>
       <view class="rmsg" style='display:{{display}}'>{{item.rmContent}}</view>
+      <view class="msgtime">{{item.msgTime}}</view>
       <view class="line"></view>
     </navigator>
   </scroll-view>

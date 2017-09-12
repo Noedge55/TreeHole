@@ -64,6 +64,7 @@ Page({
   },
 
   onShow: function () {
+    wx.showNavigationBarLoading();
     var msgList = new Array();
 
     that = this;
@@ -81,6 +82,7 @@ Page({
         console.log("总数据量：",result);
       }
     });
+    // wx.hideNavigationBarLoading();
   },
   bindLoadMore:function(e){
     var limit = that.data.limit;

@@ -4,7 +4,7 @@ var Bmob = require('../../utils/bmob.js');
 Page({
   data: {
     motto: 'Hello World',
-    picSrc: wx.getStorageSync('my_avatar'),
+    picSrc: Bmob.User.current().get("userPic"),
     myopenid : wx.getStorageSync("user_openid"),
     nickName: wx.getStorageSync("my_nick"),
   },
