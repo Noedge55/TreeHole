@@ -7,7 +7,7 @@
       </swiper-item>
     </block>
 </swiper>
-
+<view class="separate"></view>
    <scroll-view class="bodyview" style='height:{{scrollViewHeight}}px' scroll-y bindscrolltolower='bindLoadMore' bindscrolltoupper='pullDownRefresh' lower-threshold="1" upper-threshold="1">
      <navigator url="../msgDetail/msgDetail?itemId={{item.id}}&itemContent={{item.content}}&itemPic={{item.userPic}}&itemLikeNum={{item.likeNum}}&itemReplyNum={{item.replyNum}}" wx:for="{{leaveMsgList}}">
      <view>

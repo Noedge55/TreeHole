@@ -1,12 +1,16 @@
 /**index.wxss**/
 
 .swiper{
-  height: 150px;
+  height: 200px;
 }
 .swiperitem{
   text-align: center;
 }
-
+.separate{
+  height: 5px;
+  width: 100%;
+  background: gainsboro;
+}
 .titleview{
   width: 100%;
   /* height: 5%; */

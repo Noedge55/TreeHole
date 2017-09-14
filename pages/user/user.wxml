@@ -1,7 +1,7 @@
 <!--pages/user/user.wxml-->
 <view class="container">
   <view  bindtap="changeHeadPic" class="userinfo">
-    <image class="userinfo-avatar" src="{{picSrc}}" background-size="cover"></image>
+    <image class="userinfo-avatar" src="{{picSrc}}" background-size="cover" mode='aspectFill'></image>
     <text class="userinfo-nickname">{{nickName}}</text>
   </view>
   <navigator class="message" url='../myMsg/myMsg?display=none'>
@@ -13,6 +13,12 @@
   <navigator class="message" url='../myMsg/myMsg'>
     <image class="msgimg" src='/images/reply.png'></image>
     <view class="text">我的回复</view>
+    <image class="moreimg" src='/images/more.png'></image>
+  </navigator>
+  <view class="line"></view>
+  <navigator class="message" url='../wallpapers/wallpapers'>
+    <image class="msgimg" src='/images/wallpaper.png'></image>
+    <view class="text">修改轮播壁纸</view>
     <image class="moreimg" src='/images/more.png'></image>
   </navigator>
 </view>

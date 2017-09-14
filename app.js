@@ -27,6 +27,7 @@ App({
                       var nickName = userInfo.nickName;
                       var picName = getApp().globalData.imgList[Math.floor(Math.random()*8)];
                       var avatarUrl = "../../images/user_img/"+picName+".png";
+                      var authority = false;
                       Bmob.User.logIn(nickName,userData.openid,{
                         success:function(user){
                           try{
@@ -39,7 +40,9 @@ App({
 
                           }
                           console.log("登录成功");
-                        
+                          wx.showToast({
+                            title: '登录成功' + wx.getStorageSync("user_id"),
+                          })
                         },
                         error:function(user,error){
                           if(error.code=="101"){
@@ -49,6 +52,7 @@ App({
                             user.set("nickname",nickName);
                             user.set("userPic",avatarUrl);
                             user.set("userData",userData);
+                            user.set("authority",authority);
                             user.signUp(null,{
                               success:function(results){
                                 console.log("注册成功");
@@ -58,6 +62,7 @@ App({
                                   wx.setStorageSync('my_nick', results.get("nickname"));
                                   wx.setStorageSync('my_username', results.get("username"));
                                   wx.setStorageSync('my_avatar', results.get("userPic"));
+                                  wx.setStorageSync('my_authority', results.get("authority"));
                                 }catch(e){
 
                                 }

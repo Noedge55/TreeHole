@@ -1,0 +1,7 @@
+/* pages/wallpapers/wallpapers.wxss */
+image{
+  width:100%;
+}
+button{
+  margin-top: 20px;
+}

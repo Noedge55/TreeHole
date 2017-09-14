@@ -1,0 +1,7 @@
+<!--pages/wallpapers/wallpapers.wxml-->
+<view>
+  <image src='/images/addpic.png' style="height:{{wallHeight}}px"></image>
+  <image src='/images/addpic.png' style="height:{{wallHeight}}px"></image>
+  <image src='/images/addpic.png' style="height:{{wallHeight}}px"></image>
+  <button>确定</button>
+</view>
