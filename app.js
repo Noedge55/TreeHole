@@ -36,6 +36,7 @@ App({
                             wx.setStorageSync('my_nick',user.get("nickname"));
                             wx.setStorageSync('my_username',user.get("username"));
                             wx.setStorageSync('my_avatar', user.get("userPic"));
+                            wx.setStorageSync("authority", user.get("authority"));
                           }catch(e){
 
                           }
@@ -116,5 +117,7 @@ App({
   globalData: {
     userInfo: null,
     imgList: ['rabit', 'dog', 'chameleon', 'cock', 'elephant', 'hippo', 'squirrel', 'whale'],
+    swiperStatus:0,
+    refreshStatus:false
   }
 })

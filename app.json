@@ -1,11 +1,11 @@
 {
   "pages":[
-    "pages/wallpapers/wallpapers",
     "pages/index/index",
     "pages/user/user",
     "pages/msgDetail/msgDetail",
     "pages/myMsg/myMsg",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/wallpapers/wallpapers"
   ],
   "window":{
     "backgroundTextStyle":"light",

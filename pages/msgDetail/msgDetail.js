@@ -49,6 +49,7 @@ Page({
         replyMsg.save(null,{
           success:function(result2){
             common.showModal("回复成功");
+            app.globalData.refreshStatus = true;
             console.log(result2);
             //修改留言中的回复数量
             result.set('replynum',result.get('replynum')+1);
@@ -195,6 +196,7 @@ Page({
         success:function(result){
           console.log("喜欢");
           that.updateLike();
+          app.globalData.refreshStatus = true;
         },
         error:function(object,error){
           console.log(error);
@@ -209,6 +211,7 @@ Page({
         console.log(todos);
         // 删除成功
         that.updateLike();
+        app.globalData.refreshStatus = true;
       }, function (error) {
         // 异常处理
       });

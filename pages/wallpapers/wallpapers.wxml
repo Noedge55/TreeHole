@@ -1,7 +1,12 @@
 <!--pages/wallpapers/wallpapers.wxml-->
-<view>
-  <image src='/images/addpic.png' style="height:{{wallHeight}}px"></image>
-  <image src='/images/addpic.png' style="height:{{wallHeight}}px"></image>
-  <image src='/images/addpic.png' style="height:{{wallHeight}}px"></image>
-  <button>确定</button>
+<view class="body" style="height:{{windowHeight}}px">
+  <view wx:for="{{array}}" class="addPic" style="height:{{wallHeight}}px">
+    <image class="delete" id="{{item.did}}" src='/images/deletepic.png' style='display:{{item.display}}' bindtap='deleteImg'></image>
+    <image id="{{item.id}}" src='{{item.picSrc}}'  bindtap='insertImg' style="margin-left:{{item.left}};margin-top:{{item.top}};width:{{item.width}};height:{{item.height}}"></image>
+  </view>
+  <!-- <view class="addPic">
+    <image src='/images/addpic.png' mode='aspectFit'></image>
+  </view> -->
+
+  <button bindtap='submitImg'>确定</button>
 </view>

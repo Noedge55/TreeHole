@@ -1,7 +1,27 @@
 /* pages/wallpapers/wallpapers.wxss */
-image{
-  width:100%;
+.addPic{
+  width:99%;
+  border-style: solid;
+  border-color: #8a8a8a;
+  margin-bottom: 10px;
+  position: relative;
 }
+
+.delete{
+   width: 32px;
+   height: 32px;
+   position: absolute;
+   right: 0px;
+}
+
+/* image{
+  margin-right: 105px;
+  margin-top:20px;
+  height: 128px;
+  width: 128px; 
+} */
+
+
 button{
-  margin-top: 20px;
+  margin-top: 15px;
 }
