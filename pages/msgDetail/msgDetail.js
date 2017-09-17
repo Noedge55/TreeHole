@@ -155,10 +155,12 @@ Page({
               var jsonB;
               jsonB = {
                 "index": i + 1 || 0,
-                "content": result1[i].get("content") || ''
+                "content": result1[i].get("content") || '',
+                "backColor": result1[i].get("user").id == Bmob.User.current().id ? '#ADADAD' :'gainsboro'
               }
               list.push(jsonB);
             }
+            console.log(list);
             that.setData({
               replyList: list
             });

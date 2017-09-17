@@ -25,7 +25,7 @@ App({
                     success:function(result){
                       var userInfo = result.userInfo;
                       var nickName = userInfo.nickName;
-                      var picName = getApp().globalData.imgList[Math.floor(Math.random()*8)];
+                      var picName = getApp().globalData.imgList[Math.floor(Math.random()*16)];
                       var avatarUrl = "../../images/user_img/"+picName+".png";
                       var authority = false;
                       Bmob.User.logIn(nickName,userData.openid,{
@@ -116,7 +116,7 @@ App({
 
   globalData: {
     userInfo: null,
-    imgList: ['rabit', 'dog', 'chameleon', 'cock', 'elephant', 'hippo', 'squirrel', 'whale'],
+    imgList: ['1', '2', '3', '4', '5', '6', '7', '8','9','10','11','12','13','14','15','16'],
     swiperStatus:0,
     refreshStatus:false
   }

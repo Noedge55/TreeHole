@@ -11,7 +11,7 @@
 </view> 
 <view class="line"></view> 
   <scroll-view class="replycontainer" scroll-y style='height:{{scrollViewHeight}}px'>
-    <view class="rtview" wx:for="{{replyList}}">
+    <view class="rtview" wx:for="{{replyList}}" style="background:{{item.backColor}}">
             <text class="rtextn">{{item.index}}：</text>
             <text class="rtextc">{{item.content}}</text>
     </view>

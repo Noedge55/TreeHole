@@ -29,6 +29,11 @@ Page({
   onLoad: function () {
     console.log('onLoad');
     this.getSwiperImg();
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log(res.windowWidth);
+      },
+    })
   },
   onShow: function () {
     wx.showLoading({
@@ -57,6 +62,10 @@ Page({
             limit:5,
             leaveMsgList: [],
           })
+        }
+        if (app.globalData.swiperStatus == 0){
+          that.getSwiperImg();
+          app.globalData.swiperStatus = 1;
         }
         console.log("总数据量：", result);
         // that.getSwiperImg();    //获取轮播图片
@@ -124,16 +133,16 @@ Page({
    */
   getLeaveList:function(){
     var that = this;
-    var msgList = (that.data.leaveMsgList);
-    var skipSize = (that.data.limit) - (that.data.pageSize);
+    var msgList = new Array();
+    // var skipSize = (that.data.limit) - (that.data.pageSize);
     wx.getStorage({
       key: 'user_id',
       success: function (res) {
         if (res.data) {
           var LeaveMsg = Bmob.Object.extend("leave_message");
           var query = new Bmob.Query(LeaveMsg);
-          query.skip(skipSize);
-          query.limit(5);
+          // query.skip(skipSize);
+          query.limit(that.data.limit);
           query.descending("createdAt");
           query.include("user");
           query.find({
@@ -250,10 +259,7 @@ Page({
         success: function (result) {
           console.log("留言发布成功,objectId:" + result.id);
           common.showModal("留言发布成功");
-          that.setData({
-            limit:5,
-            leaveMsgList: []
-          })
+          app.globalData.refreshStatus = true;
           that.onShow();
         },
         error: function (result, error) {

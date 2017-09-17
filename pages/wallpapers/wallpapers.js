@@ -191,7 +191,7 @@ Page({
             wx.showToast({
               title: '图片上传成功',
             });
-            // app.globalData.swiperStatus = 0;
+            app.globalData.swiperStatus = 0;
             that.resetImg();
           },
           error:function(error){

@@ -7,6 +7,7 @@ Page({
     picSrc: wx.getStorageSync("my_avatar"),
     myopenid : wx.getStorageSync("user_openid"),
     nickName: wx.getStorageSync("my_nick"),
+    display:wx.getStorageSync('authority')==true?'':'none'
   },
   //事件处理函数
   changeHeadPic: function () {
@@ -32,6 +33,7 @@ Page({
                     wx.showToast({
                       title: '头像修改成功',
                     });
+                    app.globalData.refreshStatus = true;
                     that.onShow();
                   }
                 });
@@ -50,9 +52,24 @@ Page({
   onShow: function()  {
     var that = this;
     console.log('onShow');
-    console.log(wx.getStorageSync("userPic") + "dlsfj");
-    that.setData({
-      picSrc: wx.getStorageSync("userPic")
-    });
+    console.log(wx.getStorageSync("my_avatar"));
+    console.log(Bmob.User.current().id);
+
+    var User = Bmob.Object.extend("_User");
+    var query = new Bmob.Query(User);
+    query.get(Bmob.User.current().id,{
+      success:function(user){
+        console.log(user);
+        if (user.get("userPic") != wx.getStorageSync("my_avatar")){
+          wx.setStorageSync('my_avatar', user.get("userPic"));
+          that.setData({
+            picSrc: user.get("userPic")
+          })
+        }
+      },
+      error:function(error){
+        console.log(error);
+      }
+    })
   }
 })
