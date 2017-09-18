@@ -8,6 +8,7 @@
   <image class="replyimg" bindtouchstart="changeReplyImg" bindtouchend="resetReplyImg" src="{{replyImgSrc}}" mode="aspectFit"></image>
   <text class="replynum">{{itemLikeNum}}</text>
   <image class="replyimg" bindtap="changeLike" src="{{likeImgSrc}}" mode="aspectFit"></image>
+  <text class="date">{{itemDate}}</text>
 </view> 
 <view class="line"></view> 
   <scroll-view class="replycontainer" scroll-y style='height:{{scrollViewHeight}}px'>

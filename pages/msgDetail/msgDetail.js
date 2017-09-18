@@ -14,6 +14,7 @@ Page({
     itemContent:'',
     itemPic:'',
     oldItemLikeNum:'',
+    itemDate:'',
     itemLikeNum:'',
     itemReplyNum:'',
     
@@ -90,7 +91,6 @@ Page({
     console.log(that.data.windowHeight);
     that.setData({
       itemId: options.itemId,
-      itemPic: options.itemPic
     });
   },
 
@@ -108,16 +108,30 @@ Page({
     var that = this;
     //查询该条留言的基本信息
     var LeaveMsg = Bmob.Object.extend("leave_message");
+    var ItemUser = new Bmob.Object.extend("_User");
     var query = new Bmob.Query(LeaveMsg);
     query.get(that.data.itemId, {
-      success: function (result) {
-        //查询成功
+      success: function (result) {//查询留言成功
+        //查询留言对应用户头像
+        var queryUser = new Bmob.Query(ItemUser);
+        queryUser.get(result.get("user").id,{
+          success:function(res){
+            that.setData({
+              itemPic:res.get("userPic")
+            })
+          },
+          error:function(error){
+            console.log(error);
+          }
+        })
+
         that.setData({
           item:result,
           itemContent: result.get("content"),
           oldItemLikeNum: result.get("likenum"),
           itemLikeNum: result.get("likenum"),
-          itemReplyNum: result.get("replynum")
+          itemReplyNum: result.get("replynum"),
+          itemDate: result.createdAt.substring(0, 10)
         });
 
         //查询当前用户是否点赞该条留言
