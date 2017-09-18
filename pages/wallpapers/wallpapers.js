@@ -94,12 +94,12 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  // /**
+  //  * 用户点击右上角分享
+  //  */
+  // onShareAppMessage: function () {
 
-  },
+  // },
   /**
    * 管理员插入轮播图图片
    */

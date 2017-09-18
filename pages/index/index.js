@@ -273,7 +273,7 @@ Page({
       that.onShow();
     }
   },
-  onShareAppMessage:function(){
+  // onShareAppMessage:function(){
     
-  }
+  // }
 })
