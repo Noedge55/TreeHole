@@ -12,7 +12,7 @@
      <navigator url="../msgDetail/msgDetail?itemId={{item.id}}" wx:for="{{leaveMsgList}}">
      <view>
       <view class="item">
-        <image src="{{item.userPic}}" mode="aspectFit"></image>
+        <image src="{{item.userPic}}" background-size="cover" mode='aspectFill'></image>
         <text class="content">{{item.content}}</text>
       </view>
       <view class="replyview">

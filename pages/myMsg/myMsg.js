@@ -1,5 +1,6 @@
 // pages/myMsg/myMsg.js
 var Bmob = require('../../utils/bmob.js');
+var app = getApp();
 Page({
 
   /**
@@ -53,7 +54,7 @@ Page({
             let jsonA;
             jsonA = {
               lmId:results[i].id,
-              lmContent:results[i].get("content"),
+              lmContent: app.getPreString(results[i].get("content")),
               msgTime: results[i].createdAt.substring(0, 10)
             }
             list.push(jsonA);
@@ -98,8 +99,8 @@ Page({
                       let jsonA = {
                         lmId: results[i].get("leavemsg").id,//获取回复id
                         rmId: results[i].id,//获取留言id
-                        rmContent: results[i].get("content"),//获取回复内容
-                        lmContent: result.get("content"),//获取对应留言内容
+                        rmContent: app.getPreString(results[i].get("content")),//获取回复内容
+                        lmContent: app.getPreString(result.get("content")),//获取对应留言内容
                         msgTime: results[i].createdAt.substring(0, 10)
                       }
                       list.push(jsonA);
@@ -132,7 +133,6 @@ Page({
       })
     }
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */

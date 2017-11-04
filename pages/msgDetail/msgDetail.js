@@ -9,6 +9,7 @@ Page({
    */
   data: {
     scrollViewHeight:wx.getStorageSync("windowHeight")-165,
+    contentWidth:wx.getStorageSync("windowWidth")-50,
     item:'',
     itemId:'',
     itemContent:'',

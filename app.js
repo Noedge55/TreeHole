@@ -11,6 +11,7 @@ App({
     wx.getSystemInfo({
       success: function(res) {
         wx.setStorageSync("windowHeight",res.windowHeight);
+        wx.setStorageSync("windowWidth",res.windowWidth);
       },
     });
     try{
@@ -97,7 +98,12 @@ App({
       }
     });
   },
-
+  getPreString: function (str) {
+    if (str.length > 15) {
+      str = str.substring(0, 13) + "......";
+    }
+    return str;
+  },
   getUserInfo: function(cb) {
     var that = this
     if (this.globalData.userInfo) {

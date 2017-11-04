@@ -1,7 +1,7 @@
 <!--pages/msgDetail/msgDetail.wxml-->
 <view class="item">
-  <image src="{{itemPic}}" mode="aspectFit"></image>
-  <text class="content" auto-height='true'>{{itemContent}}</text>
+  <image src="{{itemPic}}" background-size="cover" mode='aspectFill'></image>
+  <text class="content" auto-height='true' style='width:{{contentWidth}}px'>{{itemContent}}</text>
 </view>
 <view class="replyview">
   <text class="replynum">{{itemReplyNum}}</text>
@@ -14,7 +14,7 @@
   <scroll-view class="replycontainer" scroll-y style='height:{{scrollViewHeight}}px'>
     <view class="rtview" wx:for="{{replyList}}" style="background:{{item.backColor}}">
             <text class="rtextn">{{item.index}}：</text>
-            <text class="rtextc">{{item.content}}</text>
+            <text class="rtextc" style='width:{{contentWidth}}px;word-break: break-all' >{{item.content}}</text>
     </view>
   </scroll-view>
 <view class="inputview">
