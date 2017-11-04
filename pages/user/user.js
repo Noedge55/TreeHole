@@ -47,29 +47,26 @@ Page({
     });
   },
   onLoad: function () {
-    console.log('onLoad');
-  },
-  onShow: function()  {
     var that = this;
-    console.log('onShow');
-    console.log(wx.getStorageSync("my_avatar"));
-    console.log(Bmob.User.current().id);
-
+    console.log('onLoad');
     var User = Bmob.Object.extend("_User");
     var query = new Bmob.Query(User);
-    query.get(Bmob.User.current().id,{
-      success:function(user){
+    query.get(Bmob.User.current().id, {
+      success: function (user) {
         console.log(user);
-        if (user.get("userPic") != wx.getStorageSync("my_avatar")){
-          wx.setStorageSync('my_avatar', user.get("userPic"));
-          that.setData({
-            picSrc: user.get("userPic")
-          })
-        }
+        wx.setStorageSync('my_avatar', user.get("userPic"));
+        wx.setStorageSync('authority',user.get("authority"));
+        that.setData({
+          picSrc: user.get("userPic"),
+          display: user.get("authority")
+        })
       },
-      error:function(error){
+      error: function (error) {
         console.log(error);
       }
     })
+  },
+  onShow: function()  {
+    console.log('onShow');
   }
 })

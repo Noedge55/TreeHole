@@ -138,10 +138,10 @@ Page({
             that.setData({
               'array[2].picSrc': tempFilePaths,
               'array[2].display': '',
-              'array[1].left': '0px',
-              'array[1].top': '0px',
-              'array[1].width': '100%',
-              'array[1].height': '100%'
+              'array[2].left': '0px',
+              'array[2].top': '0px',
+              'array[2].width': '100%',
+              'array[2].height': '100%'
             });
             break;
         }
@@ -208,46 +208,53 @@ Page({
     var that = this;
     switch(event.target.id){
       case "delete1":
-        that.setData({
-          'array[0].picSrc': "/images/addpic.png",
-          'array[0].display': 'none',
-          'array[0].left': '125px',
-          'array[0].top': '15px',
-          'array[0].width': '128px',
-          'array[0].height': '128px'
-        });
+        that.resetImg1();
         break;
       case "delete2":
-        that.setData({
-          'array[1].picSrc': "/images/addpic.png",
-          'array[1].display': 'none',
-          'array[1].left': '125px',
-          'array[1].top': '15px',
-          'array[1].width': '128px',
-          'array[1].height': '128px'
-        });
+        that.resetImg2();
         break;
       case "delete3":
-        that.setData({
-          'array[2].picSrc': "/images/addpic.png",
-          'array[2].display': 'none',
-          'array[2].left': '125px',
-          'array[2].top': '15px',
-          'array[2].width': '128px',
-          'array[2].height': '128px'
-        });
+        that.resetImg3();
         break;
     }
   },
-  resetImg:function(){
+  resetImgs:function(){
+    var that = this;
+    that.resetImg1();
+    that.resetImg2();
+    that.resetImg3();
+  },
+  resetImg1:function(){
     var that = this;
     that.setData({
       'array[0].picSrc': "/images/addpic.png",
       'array[0].display': 'none',
+      'array[0].left': '125px',
+      'array[0].top': '15px',
+      'array[0].width': '128px',
+      'array[0].height': '128px'
+    });
+  },
+  resetImg2:function(){
+    var that = this;
+    that.setData({
       'array[1].picSrc': "/images/addpic.png",
       'array[1].display': 'none',
+      'array[1].left': '125px',
+      'array[1].top': '15px',
+      'array[1].width': '128px',
+      'array[1].height': '128px'
+    });
+  },
+  resetImg3:function(){
+    var that = this;
+    that.setData({
       'array[2].picSrc': "/images/addpic.png",
       'array[2].display': 'none',
-    })
+      'array[2].left': '125px',
+      'array[2].top': '15px',
+      'array[2].width': '128px',
+      'array[2].height': '128px'
+    });
   }
 })

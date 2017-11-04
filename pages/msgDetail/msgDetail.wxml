@@ -1,7 +1,7 @@
 <!--pages/msgDetail/msgDetail.wxml-->
 <view class="item">
   <image src="{{itemPic}}" mode="aspectFit"></image>
-  <text class="content">{{itemContent}}</text>
+  <text class="content" auto-height='true'>{{itemContent}}</text>
 </view>
 <view class="replyview">
   <text class="replynum">{{itemReplyNum}}</text>

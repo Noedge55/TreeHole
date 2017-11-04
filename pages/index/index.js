@@ -150,6 +150,9 @@ Page({
               for (var i = 0; i < results.length; i++) {
                 var userId = results[i].get("user").id; //获取用户id
                 var content = results[i].get("content");//获取留言内容
+                if(content.length>15){
+                  content = content.substring(0,13) + "......";
+                }
                 var id = results[i].id;//获取留言id
                 var createAt = results[i].createdAt.substring(0, 10);//获取留言创建时间
                 var userPic = results[i].get("user").get("userPic");//获取用户头像
