@@ -192,7 +192,7 @@ Page({
               title: '图片上传成功',
             });
             app.globalData.swiperStatus = 0;
-            that.resetImg();
+            that.resetImgs();
           },
           error:function(error){
             console.log(error);
