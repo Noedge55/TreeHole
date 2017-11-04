@@ -30,11 +30,14 @@ Page({
                   success: function (user) {
                     console.log("头像修改成功"+user);
                     wx.setStorageSync("userPic",user.get("userPic"));
+                    that.setData({
+                      picSrc:user.get("userPic")
+                    });
                     wx.showToast({
                       title: '头像修改成功',
                     });
+
                     app.globalData.refreshStatus = true;
-                    that.onShow();
                   }
                 });
               }
